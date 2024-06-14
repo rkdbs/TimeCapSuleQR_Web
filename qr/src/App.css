@@ -1,0 +1,45 @@
+.container{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  row-gap: 12px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #5A8EC8;
+}
+
+.container > img {
+  width: 85vw;
+}
+
+.box > div {
+  width: 85vw;
+  height: 80vw;
+  row-gap: 13px;
+  display: flex;
+  color: #FFF;
+  align-items: center;
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.box > div > img {
+  width: 10vw;
+}
+
+.button {
+  width: 85vw;
+  height: 50px;
+  display: flex; 
+  cursor: pointer;
+  margin-top: 11px;
+  color: #4E7CB0;
+  align-items: center;
+  border-radius: 10px;
+  justify-content: center;
+  background-color: #FFF;
+}
