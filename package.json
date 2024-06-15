@@ -1,5 +1,6 @@
 {
-  "name": "qr",
+  "name": "TimeCapsuleQR_Web",
+  "homepage": "https://timecapsule-qr.netlify.app/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
