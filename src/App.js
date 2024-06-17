@@ -28,6 +28,7 @@ function App() {
         style={{ display: 'none' }}
         onChange={(event) => {
           console.log(event.target.files[0]);
+          alert("이미지 업로드가 완료되었습니다");
         }}
       />
 
