@@ -23,7 +23,7 @@ function App() {
 
       <input
         type="file"
-        accept="image/*"
+        accept="image/jpeg"
         ref={fileInputRef}
         style={{ display: 'none' }}
         onChange={(event) => {
