@@ -2,7 +2,7 @@
   width: 100vw;
   height: 100vh;
   display: flex;
-  row-gap: 12px;
+  row-gap: 36px;
   align-items: center;
   flex-direction: column;
   justify-content: center;
@@ -13,10 +13,17 @@
   width: 85vw;
 }
 
+.box {
+  row-gap: 18px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .box > div {
   width: 85vw;
-  height: 80vw;
-  row-gap: 13px;
+  height: 40vw;
   display: flex;
   color: #FFF;
   align-items: center;
