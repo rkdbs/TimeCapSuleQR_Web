@@ -11,6 +11,22 @@ function App() {
     fileInputRef.current.click();
   }
 
+  const randomImg = () => {
+    const randomIndex = Math.floor(Math.random() * images.length);
+    const selectedImage = images[randomIndex];
+    console.log(selectedImage);
+  }
+
+  const images = [
+    '../public/images/beluga.jpg',
+    '../public/images/cat.jpeg',
+    '../public/images/dog.jpeg',
+    '../public/images/duck.jpg',
+    '../public/images/lion.jpeg',
+    '../public/images/quokka.jpeg',
+    '../public/images/redpanda.jpeg',
+  ]
+
   const applyImg = async () => {
     if (fileInputRef.current.files.length === 0) {
       alert('이미지를 업로드 해주세요!');
@@ -43,10 +59,13 @@ function App() {
     <div className="container">
       <img src={logo} alt='' />
 
-      <div className='box' onClick={uploadImg} > 
-        <div>
+      <div className='box'> 
+        <div onClick={uploadImg}>
           <img src={gallery} alt='' />
           <p>이미지 업로드</p>
+        </div>
+        <div onClick={randomImg}>
+          <p>랜덤 이미지</p>
         </div>
       </div>
 
