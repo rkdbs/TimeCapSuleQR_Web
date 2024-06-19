@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import logo from './timecapsule.png';
 import gallery from './gallery.png';
 import './App.css';
@@ -6,15 +6,18 @@ import axios from 'axios';
 
 function App() {
   const fileInputRef = useRef(null);
+  const [hasClicked, setHasClicked] = useState(false);
 
   const uploadImg = () => {
     fileInputRef.current.click();
+    setHasClicked(true);
   }
 
   const randomImg = () => {
     const randomIndex = Math.floor(Math.random() * images.length);
     const selectedImage = images[randomIndex];
     console.log(selectedImage);
+    setHasClicked(true);
   }
 
   const images = [
@@ -28,8 +31,8 @@ function App() {
   ]
 
   const applyImg = async () => {
-    if (fileInputRef.current.files.length === 0) {
-      alert('이미지를 업로드 해주세요!');
+    if (!hasClicked) {
+      alert('이미지를 업로드해주세요!');
       return;
     }
 
@@ -76,6 +79,7 @@ function App() {
         style={{ display: 'none' }}
         onChange={(event) => {
           alert("이미지 업로드가 완료되었습니다. 이미지 적용 버튼을 눌러주세요!");
+          setHasClicked(true);
         }}
       />
 
