@@ -22,7 +22,7 @@ function App() {
     formData.append('capsuleImage', file);
 
     try {
-      const res = await axios.post(`${process.env.REACT_APP_HOST}/letters/capsule`, formData, {
+      const res = await axios.post('http://52.78.95.224:3001/letters/capsule', formData, {
         headers: {
           "Content-Type": "multipart/form-data"
         }
