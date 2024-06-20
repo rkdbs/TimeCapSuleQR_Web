@@ -1,22 +1,27 @@
 import React, { useRef, useState } from 'react';
 import logo from './timecapsule.png';
 import gallery from './gallery.png';
+import random from './random.png';
 import './App.css';
 import axios from 'axios';
 
 function App() {
   const fileInputRef = useRef(null);
   const [hasClicked, setHasClicked] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const uploadImg = () => {
     fileInputRef.current.click();
     setHasClicked(true);
+    setSelectedImage(null);
   }
 
   const randomImg = () => {
     const randomIndex = Math.floor(Math.random() * images.length);
-    const selectedImage = images[randomIndex];
-    console.log(selectedImage);
+    const fullPath = images[randomIndex];
+    const fileName = fullPath.split('/').pop();
+    console.log(fileName);
+    setSelectedImage(fileName);
     setHasClicked(true);
   }
 
@@ -36,12 +41,18 @@ function App() {
       return;
     }
 
-    const file = fileInputRef.current.files[0];
     const formData = new FormData();
-    formData.append('capsuleImage', file);
+
+    if (selectedImage) {
+      formData.append('imageUrl', selectedImage);
+    }
+    else {
+      const file = fileInputRef.current.files[0];
+      formData.append('capsuleImage', file);
+    }
 
     try {
-      const res = await axios.post('http://52.78.95.224:3001/letters/capsule', formData, {
+      const res = await axios.patch(`http://52.78.95.224:3001/letters/capsule`, formData, {
         headers: {
           "Content-Type": "multipart/form-data"
         }
@@ -52,10 +63,6 @@ function App() {
     } catch (error) {
       console.error("에러 발생", error);
     }
-
-    for (const [key, value] of formData.entries()) {
-      console.log(key, value.name);
-    };
   }
 
   return (
@@ -67,9 +74,6 @@ function App() {
           <img src={gallery} alt='' />
           <p>이미지 업로드</p>
         </div>
-        <div onClick={randomImg}>
-          <p>랜덤 이미지</p>
-        </div>
       </div>
 
       <input
@@ -78,8 +82,9 @@ function App() {
         ref={fileInputRef}
         style={{ display: 'none' }}
         onChange={(event) => {
-          alert("이미지 업로드가 완료되었습니다. 이미지 적용 버튼을 눌러주세요!");
+          console.log(event.target.files[0].name);
           setHasClicked(true);
+          setSelectedImage(null); 
         }}
       />
 
