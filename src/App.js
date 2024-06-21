@@ -113,7 +113,7 @@ function App() {
 
     try {
       const res = await axios.post(
-        `${process.env.REACT_APP_HOST}/letters/capsule`,
+        `http://52.78.95.224:3001/letters/capsule`,
         formData,
         {
           headers: {
